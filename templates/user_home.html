@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>e-Library</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+    }
+
+    .login-container {
+      padding: 50px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .book-card{
+      width: 100%;
+      height: 85%; 
+      background-color: aqua;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .book-actions{
+      background-color: #ffffff;
+      border-color:white;
+    }
+    .book-actions:hover{
+        background-color: #949191;
+        border-color: #3b3a3a;
+    }
+    .your-books{
+      padding: 1rem;
+      background-color: rgb(160, 166, 172);
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .all-books{
+      padding: 1rem;
+      background-color:rgb(255, 255, 255);
+      border-radius: 20px;
+      margin-bottom: 20px;
+    
+    }
+    .explore-books{
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+   <div class="container-fluid" style="width: 95%; margin-top: 2%;" >
+     <div class="row justify-content-center"  >
+      <div class="form-outline mb-4" data-mdb-input-init style="width: 100%;">
+        <input type="search" class="form-control" id="datatable-search-input" style="width: 95%;">
+        <label class="form-label" for="datatable-search-input">Search</label>
+      </div>
+      <div id="datatable">
+      </div>
+     </div>
+     <div class="row justify-content-left your-books">
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem;" >
+          <img src="static/book1.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Alone</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+      </div>
+     <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+          <img src="static/book2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">A Journey to moon</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+     </div>
+     <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src="static/book3.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Modern Spaces</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+      <img src="static/book4.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Fire and Blood</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+      </div>
+    </div>
+ </div>
+     </div>
+     <div class="row" style="justify-content: space-between;">
+      <div class="col-md-8">
+       <h2> Explore</h2>
+      </div>
+      <div class="col-md-2">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches">
+            <label class="custom-control-label" for="customSwitches">Show by section</label>
+          </div>
+      </div>
+     </div>
+     <div class="row justify-content-left all-books">
+      <div class="col-md-3 explore-books">
+        <div class="card" style="width: 18rem;" >
+          <img src="static/book1.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Alone</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+      </div>
+     <div class="col-md-3 explore-books">
+        <div class="card" style="width: 18rem;">
+          <img src="static/book2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">A Journey to moon</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+     </div>
+     <div class="col-md-3 explore-books">
+      <div class="card" style="width: 18rem;">
+        <img src="static/book3.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Modern Spaces</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-3 explore-books">
+    <div class="card" style="width: 18rem;">
+      <img src="static/book4.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Fire and Blood</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+      </div>
+    </div>
+     </div>
+     <div class="col-md-3 explore-books">
+      <div class="card" style="width: 18rem;">
+        <img src="static/book4.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Fire and Blood</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        </div>
+      </div>
+       </div>
+   </div>
+       
+</body>
+</body>
+</html>
