@@ -1,19 +1,23 @@
-from flask import Flask, render_template, request
+import os
+from flask import Flask
+from application import config
+from application.config import LocalDevelopmentConfig
+from application.database import db
 
-app = Flask(__name__)
-if __name__=="main":
-    app.run(debug=True,port=8080)
-@app.route('/',methods=["GET","POST"])
-def index():
-    if request.method=="GET":
-        return render_template('home_login.html')
-    elif request.method=="POST":
-        email=request.form["email"]
-        password=request.form["password"]
-       # password=request.form['pwd']
-        print(email,password,hash(password))
-        return "Logged in"
+app = None
 
-@app.route('/user_home')
-def user_home():
-    return render_template("user_home.html")
+def create_app():
+    app = Flask(__name__, template_folder="templates")
+    app.config.from_object(LocalDevelopmentConfig)
+    db.init_app(app)
+    app.app_context().push()
+    return app
+
+app = create_app()
+app.secret_key="qwerty"
+# Import all the controllers so they are loaded
+from application.controllers import *
+
+if __name__ == '__main__':
+  # Run the Flask app
+  app.run(host='0.0.0.0',port=8080)
