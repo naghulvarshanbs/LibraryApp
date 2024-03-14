@@ -7,7 +7,7 @@ class User(db.Model):
     password=db.Column(db.Integer,nullable=False)
 class Books(db.Model):
     __tablename__='books'
-    id=db.Column(db.Integer,nullable=False,autoincrement=True,primary_key=True)
+    book_id=db.Column(db.Integer,nullable=False,autoincrement=True,primary_key=True)
     book_name=db.Column(db.String,nullable=False)
     book_author=db.Column(db.String)
     book_content=db.Column(db.LargeBinary,nullable=False)

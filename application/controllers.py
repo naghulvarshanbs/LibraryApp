@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, session, Response
+from flask import Flask, request, redirect, send_file, url_for, session, Response
 from flask import render_template
 from flask import current_app as app
 from application.functions import validate_email, valid_password, line_plot, song_plot
@@ -51,3 +51,10 @@ def admin():
         db.session.add(new_book)
         db.session.commit()
         return render_template("admin_home.html")
+@app.route("/document/<int:document_id>")
+def get_document(document_id):
+    document = Books.query.filter_by(book_id=document_id).first()
+    return send_file(
+        document.book_content,
+        mimetype="application/pdf"
+    )
