@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, url_for, session, Response
 from flask import render_template
 from flask import current_app as app
 from application.functions import validate_email, valid_password, line_plot, song_plot
-from application.models import User
+from application.models import User, Books
 from .database import db
 from sqlalchemy import func
 from datetime import datetime, timedelta
@@ -31,8 +31,22 @@ def user_home():
 @app.route('/signup')
 def signup():
     return "helo"
-@app.route('/read')
-def read():
-    name = request.args.get('name')
+@app.route('/read/<b_name>')
+def read(name):
     print(name)
     return render_template("books_view.html")
+@app.route("/admin_home",methods=["GET","POST"])
+def admin():
+    if request.method=="GET":
+      return render_template("admin_home.html")
+    else:
+      #   print(request.form["book_name"])
+      #   print(request.form["book_author"])
+      #   print(request.files["content"].read())
+        name=request.form["book_name"]
+        author=request.form["book_author"]
+        c=request.files["content"].read()
+        new_book=Books(book_name=name,book_author=author,book_content=c)
+        db.session.add(new_book)
+        db.session.commit()
+        return render_template("admin_home.html")

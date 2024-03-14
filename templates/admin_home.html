@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>e-Library</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+    }
+
+    .login-container {
+      padding: 50px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .book-card{
+      width: 100%;
+      height: 85%; 
+      background-color: aqua;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .book-actions{
+      background-color: #ffffff;
+      border-color:white;
+    }
+    .book-actions:hover{
+        background-color: #949191;
+        border-color: #3b3a3a;
+    }
+    .your-books{
+      padding: 1rem;
+      background-color: rgb(160, 166, 172);
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .all-books{
+      padding: 1rem;
+      background-color:rgb(255, 255, 255);
+      border-radius: 20px;
+      margin-bottom: 20px;
+    
+    }
+    .explore-books{
+      margin-top: 30px;
+    }
+    #content{
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+  </style>
+</head>
+<body>
+   <div class="container-fluid" style="width: 95%; margin-top: 2%;" >
+     <div class="row justify-content-center"  >
+      <div class="form-outline mb-4" data-mdb-input-init style="width: 100%;">
+        <input type="search" class="form-control" id="datatable-search-input" style="width: 95%;">
+        <label class="form-label" for="datatable-search-input">Search</label>
+      </div>
+      <div id="datatable">
+      </div>
+     </div>
+     
+     </div>
+     <div class="row justify-content-left all-books">
+      <div class="col-md-3 explore-books">
+        <div class="card" style="width: 18rem;" >
+          <img src="static/book1.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Alone</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+      </div>
+     <div class="col-md-3 explore-books">
+        <div class="card" style="width: 18rem;">
+          <img src="static/book2.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">A Journey to moon</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+          </div>
+        </div>
+     </div>
+     <div class="col-md-3 explore-books">
+      <div class="card" style="width: 18rem;">
+        <img src="static/book3.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Modern Spaces</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        </div>
+      </div>
+   </div>
+   <div class="col-md-3 explore-books">
+    <div class="card" style="width: 18rem;">
+      <img src="static/book4.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Fire and Blood</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+      </div>
+    </div>
+     </div>
+     <div class="col-md-3 explore-books">
+      <div class="card" style="width: 18rem;">
+        <img src="static/book4.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Fire and Blood</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        </div>
+      </div>
+       </div>
+   </div>
+   <div class="content" id="content">
+    <button type="button" popovertarget="add_book">Upload</button>
+    <div popover id="add_book">
+        <form method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="book_name" style="margin-bottom: 5px;">Book name</label>
+                <input type="text" name="book_name" style="padding: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="book_author" style="margin-bottom: 5px;">Author</label>
+                <input type="text" name="book_author" style="padding: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="content" style="margin-bottom: 5px;">Content</label>
+                <input type="file" name="content" accept=".pdf" required style="padding: 5px; border: 1px solid #ccc;" />
+            </div>
+            <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                <label for="cover" style="margin-bottom: 5px;">Book cover</label>
+                <input type="file" name="cover" accept=".jpg" required style="padding: 5px; border: 1px solid #ccc;" />
+            </div>
+            <input type="submit" name="submit" style="padding: 5px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" />
+        </form>
+    </div>
+</div>
+
+       
+</body>
+</body>
+</html>
