@@ -45,8 +45,9 @@ def admin():
       #   print(request.files["content"].read())
         name=request.form["book_name"]
         author=request.form["book_author"]
-        c=request.files["content"].read()
-        new_book=Books(book_name=name,book_author=author,book_content=c)
+        content=request.files["content"].read()
+        cover=request.files["cover"].read()
+        new_book=Books(book_name=name,book_author=author,book_content=content,book_cover=cover)
         db.session.add(new_book)
         db.session.commit()
         return render_template("admin_home.html")

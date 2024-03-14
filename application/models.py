@@ -10,7 +10,9 @@ class Books(db.Model):
     id=db.Column(db.Integer,nullable=False,autoincrement=True,primary_key=True)
     book_name=db.Column(db.String,nullable=False)
     book_author=db.Column(db.String)
-    book_content=db.Column(db.LargeBinary)
+    book_content=db.Column(db.LargeBinary,nullable=False)
+    book_cover=db.Column(db.LargeBinary,nullable=False)
+
 # class User(db.Model):
 #     __tablename__='user'
 #     user_id=db.Column(db.Integer,autoincrement=True,primary_key=True)
