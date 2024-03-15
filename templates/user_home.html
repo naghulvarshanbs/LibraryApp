@@ -178,11 +178,10 @@
       </cust>
      
    </div>
-   <h2 style="padding-left: 2%;">Sections</h2>
-      
+   <div><h2 style="padding-left: 2%;">Sections</h2></div>
       {% for s in sections %}
       <div class="row s_{{s.name}}" style="padding-left: 2%;">
-          <div class="col-lg-12">
+          <div class="col-lg-8">
               <h3>{{ s.name }}</h3>
               <h4>{{ s.description }}</h4>
               <div class="row justify-content-left all-books">
@@ -211,7 +210,8 @@
           </div>
       </div>
       {% endfor %}
-       
+  </div>
+</div>
 </body>
 </body>
 </html>
