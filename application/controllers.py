@@ -2,10 +2,8 @@ import base64
 from flask import Flask, flash, request, redirect, send_file, url_for, session, Response
 from flask import render_template
 from flask import current_app as app
-from application.functions import validate_email, valid_password, line_plot, song_plot
 from application.models import User, Books, Ad, Issue_Request, Section, Section_Contents
 from .database import db
-from sqlalchemy import func
 from datetime import datetime, timedelta
 import datetime
 # from application.models import Article
