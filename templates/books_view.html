@@ -12,18 +12,16 @@
 <body>
     <div class="row justify-content-around" style="background-color: rgb(0, 0, 0);">
         <div class="col-sm-2">
-            <img src="static/book1.webp" style="height: 15rem;width: auto;">
+            <img src="../static/cover.jpg" style="height: 15rem;width: auto;">
         </div>
         <div class="col-md-8" style="padding-top: 5rem; color: aliceblue;">
-           <h1> Book1 title </h1>
-           <h4> Author name </h4>
+           <h1> {{title}} </h1>
+           <h4> {{author}} </h4>
         </div>        
     </div>
     <div class="row" style="padding: 5rem;">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis aperiam accusantium quae impedit aliquid, in odit tempora eaque vero minus blanditiis omnis obcaecati, beatae voluptates ab ullam, esse quidem! Sapiente?
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, cupiditate reiciendis ea esse aspernatur fuga quas adipisci eaque ducimus ipsum nobis. Repellat dolore autem, aut ducimus id itaque hic consectetur.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore illum tempora non nam aut veritatis quod, illo ea debitis quidem ipsam iure molestiae voluptates eius impedit. Ut minima aut nulla?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui labore fuga quam, sapiente velit inventore aperiam sint fugiat nostrum reiciendis? Fugiat, cumque? Facere minus culpa doloribus quis perspiciatis in perferendis!
-    </div>
+        <!-- <iframe src="../static/output_file.pdf"  width="100%" height="600px" frameborder="0"></iframe> -->
+        <embed src="../static/output_file.pdf#toolbar=0"  width="100%" height="1000px"  />
+     </div>
 </body>
 </html>

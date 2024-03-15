@@ -5,6 +5,7 @@ class User(db.Model):
     id=db.Column(db.Integer,nullable=False,autoincrement=True,primary_key=True)
     email=db.Column(db.String,nullable=False,unique=True)
     password=db.Column(db.Integer,nullable=False)
+    issue_requests = db.relationship('Issue_Request', backref='user', lazy=True)
 class Books(db.Model):
     __tablename__='books'
     book_id=db.Column(db.Integer,nullable=False,autoincrement=True,primary_key=True)
@@ -12,7 +13,31 @@ class Books(db.Model):
     book_author=db.Column(db.String)
     book_content=db.Column(db.LargeBinary,nullable=False)
     book_cover=db.Column(db.LargeBinary,nullable=False)
-
+    issue_date=db.Column(db.Date)
+    renewal_date=db.Column(db.Date)
+    issued_to=db.Column(db.Integer,default=0)
+    upload_date=db.Column(db.Date)
+    sec=db.relationship('Section_Contents',backref='books',lazy=True)
+class Ad(db.Model):
+    __tablename__='admin_table'
+    email=db.Column(db.String,nullable=False,primary_key=True)
+    password=db.Column(db.String,nullable=False)
+class Issue_Request(db.Model):
+    __tablename__='issue_request'
+    book_id = db.Column(db.Integer, db.ForeignKey('books.book_id'), primary_key=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True, nullable=False)
+    dt=db.Column(db.Date)
+    period=db.Column(db.Integer)
+class Section(db.Model):
+    __tablename__='section'
+    id=db.Column(db.Integer,autoincrement=True,primary_key=True)
+    name=db.Column(db.String,nullable=False)
+    description=db.Column(db.String)
+    contents=db.relationship('Section_Contents',backref='section',lazy=True)
+class Section_Contents(db.Model):
+    __tablename__='section_contents'
+    section_id=db.Column(db.String,db.ForeignKey('section.id'),nullable=False,primary_key=True)
+    book_id=db.Column(db.String,db.ForeignKey('books.book_id'),nullable=False,primary_key=True)
 # class User(db.Model):
 #     __tablename__='user'
 #     user_id=db.Column(db.Integer,autoincrement=True,primary_key=True)

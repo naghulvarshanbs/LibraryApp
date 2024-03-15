@@ -59,140 +59,158 @@
       margin-top: 30px;
     }
   </style>
+  <script>
+     function clearTable() {
+        const datatable = document.getElementById("datatable");
+        datatable.style.display = "none";
+        datatable.innerHTML = ""; // Clear the content of the datatable
+    }
+
+    function search(search) {
+        const divElements = document.querySelectorAll('div');
+        const book_divs = Array.from(divElements).filter(div => div.className.includes('b_'));
+        const sec_divs = Array.from(divElements).filter(div => div.className.includes('s_'));
+        const targetElement = document.getElementById("datatable");
+        
+        // Clear the content of the datatable
+        targetElement.innerHTML = "";
+        const book=document.createElement('h4')
+        book.textContent="Books"
+        targetElement.appendChild(book);
+        book_divs.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.className.split("b_")[1];
+            if (listItem.textContent.startsWith(search)){
+              targetElement.appendChild(listItem);
+            }
+        });
+        const section=document.createElement('h4')
+        section.textContent="Section"
+        targetElement.append(section)
+        sec_divs.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.className.split("s_")[1];
+            if (listItem.textContent.startsWith(search)){
+              targetElement.appendChild(listItem);
+            }
+        });
+        
+        targetElement.style.display = "block"; // Make the datatable visible
+    }
+    
+  </script>
+  
 </head>
 <body>
-   <div class="container-fluid" style="width: 95%; margin-top: 2%;" >
-     <div class="row justify-content-center"  >
-      <div class="form-outline mb-4" data-mdb-input-init style="width: 100%;">
-        <input type="search" class="form-control" id="datatable-search-input" style="width: 95%;">
-        <label class="form-label" for="datatable-search-input">Search</label>
-      </div>
-      <div id="datatable">
-      </div>
-     </div>
-     <div class="row justify-content-left your-books">
+  <div class="container-fluid" style="width: 95%; margin-top: 2%;">
+    <div class="row justify-content-center">
+     <!-- Search input field -->
+     
+      
+     <div class="col-md-10">
+      <input type="search" class="form-control" id="search-input" name="search-input" style="width: 95%;" placeholder="Search by book">
+  </div>
+  
+  <div class="col-md-1">
+      <button type="button" class="btn btn-primary btn-block" onclick="search(document.getElementById('search-input').value)">Search</button>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-secondary btn-block" onclick="clearTable()">Clear</button>
+</div>
+  <div id="datatable" class="col-md-12" style="display: none;">
+  </div>
+      
+     
+    </div>
+     <div class="row justify-content-left your-books" style="margin-top: 5rem; margin-bottom: 5rem;">
+      {% for i in issued %}
       <div class="col-md-3">
         <div class="card" style="width: 18rem;" >
-          <img src="static/book1.webp" class="card-img-top" alt="...">
+          <img src = "data:image/jpeg;base64,{{ i.book_cover }}",id="i.encoded_image_date" class="card-img-top" alt="Book Cover">
           <div class="card-body">
-            <h5 class="card-title">Alone</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="{{url_for('read',name='book1')}}" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
+            <h5 class="card-title">{{i.book_title}}</h5>
+            <p class="card-text">{{i.book_author}}</p>
+            <a href="{{url_for('read',id=i.book_id)}}" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
+            <a href="{{url_for('ret',id=i.book_id)}}" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
             <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
           </div>
         </div>
       </div>
-     <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-          <img src="static/book2.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">A Journey to moon</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-          </div>
-        </div>
-     </div>
-     <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
-        <img src="static/book3.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Modern Spaces</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-        </div>
-      </div>
-   </div>
-   <div class="col-md-3">
-    <div class="card" style="width: 18rem;">
-      <img src="static/book4.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Fire and Blood</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-      </div>
-    </div>
- </div>
+    {% endfor %}
      </div>
      <div class="row" style="justify-content: space-between;">
       <div class="col-md-8">
        <h2> Explore</h2>
       </div>
-      <div class="col-md-2">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitches">
-            <label class="custom-control-label" for="customSwitches">Show by section</label>
-          </div>
-      </div>
      </div>
      <div class="row justify-content-left all-books">
-      <div class="col-md-3 explore-books">
-        <div class="card" style="width: 18rem;" >
-          <img src="static/book1.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Alone</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        <div class="col-md-3 explore-books">
+        <cust>
+          {% for b in books %}
+          <div class="card b_{{b.book_name}}" style="width: 18rem;" >
+            <img src = "data:image/jpeg;base64,{{ b.book_cover }}",id="b.encoded_image_date" class="card-img-top" alt="Book Cover">
+            <!-- <img src="static/book1.webp" class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h5 class="card-title">{{b.book_name}}</h5>
+              <p class="card-text">{{b.book_author}}</p>
+              {% if b.issued_to!=usr %}
+              <button type="button" class="btn btn-primary" popovertarget="num_days">Request</button>
+              <form method="POST" style="display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+                 <div popover id="num_days">
+                    <label for="days" style="margin-bottom: 5px;">Days: </label>
+                    <input type="text" name="days" style="padding: 5px; border: 1px solid #ccc;" />
+                    <input type="hidden" name="book_id" value="{{b.book_id}}">
+                 <input type="submit" name="submit" style="padding: 5px; background-color: #007bff; color: #fff; border: none; cursor: pointer;" />
+                  </div>
+                </div>
+              <!-- </form>  
+              <form action="{{ url_for('user_home') }}" method="post">
+                  <input type="hidden" name="book_id" value="{{ b.book_id }}">
+                  <button type="submit" class="btn btn-primary">Request</button>
+                </form> -->
+              {% endif %}
+              <!-- <a href="#" class="btn btn-primary rounded-circle book-actions">Request</a> -->
+            </div>
           </div>
         </div>
-      </div>
-     <div class="col-md-3 explore-books">
-        <div class="card" style="width: 18rem;">
-          <img src="static/book2.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">A Journey to moon</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-            <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
+        {% endfor %}
+      </cust>
+     
+   </div>
+   <h2 style="padding-left: 2%;">Sections</h2>
+      
+      {% for s in sections %}
+      <div class="row s_{{s.name}}" style="padding-left: 2%;">
+          <div class="col-lg-12">
+              <h3>{{ s.name }}</h3>
+              <h4>{{ s.description }}</h4>
+              <div class="row justify-content-left all-books">
+                  {% for content in s.contents %}
+                  <div class="col-md-3 explore-books">
+                      <div class="card" style="width: 18rem;">
+                          <img src="data:image/jpeg;base64,{{ content.books.book_cover }}" class="card-img-top" alt="Book Cover">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ content.books.book_name }}</h5>
+                              <p class="card-text">{{ content.books.book_author }}</p>
+                              {% if content.books.issued_to!=session["id"] %}
+                              <form action="{{ url_for('user_home') }}" method="post">
+                                <input type="hidden" name="book_id" value="{{ content.books.book_id }}">
+                                <button type="submit" class="btn btn-primary">Request</button>
+                              </form>
+                              {% endif %}
+                          </div>
+                      </div>
+                  </div>
+                  {% if loop.index % 4 == 0 %}
+              </div>
+              <div class="row justify-content-left all-books">
+                  {% endif %}
+                  {% endfor %}
+              </div>
           </div>
-        </div>
-     </div>
-     <div class="col-md-3 explore-books">
-      <div class="card" style="width: 18rem;">
-        <img src="static/book3.webp" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Modern Spaces</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-        </div>
       </div>
-   </div>
-   <div class="col-md-3 explore-books">
-    <div class="card" style="width: 18rem;">
-      <img src="static/book4.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Fire and Blood</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-        <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-      </div>
-    </div>
-     </div>
-     <div class="col-md-3 explore-books">
-      <div class="card" style="width: 18rem;">
-        <img src="static/book4.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Fire and Blood</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/book-fill.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/arrow-return-left.svg"></a>
-          <a href="#" class="btn btn-primary rounded-circle book-actions"><img src="static/download.svg"></a>
-        </div>
-      </div>
-       </div>
-   </div>
+      {% endfor %}
        
 </body>
 </body>
